@@ -38,8 +38,6 @@ public class EmptyListAdapter extends RecyclerView.Adapter<EmptyListAdapter.Cust
         notifyDataSetChanged();
     }
 
-
-
     @Override
     public int getItemViewType(int position) {
         if (showEmptyView) {
@@ -51,7 +49,7 @@ public class EmptyListAdapter extends RecyclerView.Adapter<EmptyListAdapter.Cust
 
     @Override
     public long getItemId(int position) {
-        if(isDataNotEmpty() && mData.size() > position){
+        if (isDataNotEmpty() && mData.size() > position) {
             return mData.get(position);
         } else {
             return 0;
