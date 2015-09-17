@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +30,7 @@ public class EmptyListAdapter extends RecyclerView.Adapter<EmptyListAdapter.Cust
     public void setData(List<Integer> data) {
         if (data == null) {
             showEmptyView = true;
-            mData = Arrays.asList(1);
+            mData = new ArrayList<>();
         } else {
             showEmptyView = false;
             mData = data;
@@ -87,7 +87,11 @@ public class EmptyListAdapter extends RecyclerView.Adapter<EmptyListAdapter.Cust
 
     @Override
     public int getItemCount() {
-        return mData != null ? mData.size() : 0;
+        int size = mData != null ? mData.size() : 0;
+        if (showEmptyView) {
+            size += 1;
+        }
+        return size;
     }
 
     abstract class CustomViewHolder extends RecyclerView.ViewHolder {
